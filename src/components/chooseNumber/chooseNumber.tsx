@@ -1,5 +1,5 @@
 import "./chooseNumber.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SquareActionType, squareStore } from "../../redux/squareStore";
 
 function ChooseNumber(): JSX.Element {

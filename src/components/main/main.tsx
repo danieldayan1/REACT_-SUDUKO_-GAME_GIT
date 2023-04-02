@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SquareModel from "../../Models/SquareModel";
-import { SquareActionType, squareStore } from "../../redux/squareStore";
+import {  squareStore } from "../../redux/squareStore";
 import ChooseNumber from "../chooseNumber/chooseNumber";
 import Square from "../square/square";
 import "./main.css";
@@ -27,7 +27,8 @@ function Main(): JSX.Element {
     const calcResult = ()=>{
         const value = squareStore.getState().value;
         const square = squareStore.getState().square;
-        if(value && square && !square.success &&  square.value==value){
+
+        if(value && square && !square.success &&  square.value===value){
             square.success = true;
         }else{
             if(value && square)
@@ -61,7 +62,7 @@ function Main(): JSX.Element {
     return (
         <div className="main">
             {board?.map((val,index) =>
-                <div style={{display:"inline"}}> 
+                <div style={{display:"inline"}} > 
                     <Square square={val}/> 
                     {(index+1)%9===0&&<br/>}
                 </div>

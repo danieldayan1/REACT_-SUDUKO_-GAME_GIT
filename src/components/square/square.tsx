@@ -9,7 +9,8 @@ interface SquareProps {
 
 function Square(props:SquareProps): JSX.Element {
 
-    const [sucsess,setSucsess] = useState<Boolean>(false)
+    const [sucsess,setSucsess] = useState<Boolean>(false);
+    const [color,setColor]  = useState<string>()
 
     useEffect(()=>{
 
@@ -24,8 +25,8 @@ function Square(props:SquareProps): JSX.Element {
         }
     },[])
   
-    const chooseSquare = (iteam:any)=>{
-        iteam.style.color = "red"
+    const chooseSquare = ()=>{
+        setColor("red")
         squareStore.dispatch({ type: SquareActionType.saveSquare, payload: props.square })
     }
 
@@ -35,8 +36,8 @@ function Square(props:SquareProps): JSX.Element {
         <span>{sucsess?<div className="square">
                 <span >:::{props.square.value}:::</span>
             </div>:
-            <div className = "square" onClick={(e)=>{chooseSquare(e.target as HTMLInputElement)}}>
-               <span >::::::::</span>
+            <div className = "square" onClick={(e)=>{chooseSquare()}} >
+               <span style={{color:color}}>::::::::</span>
             </div>}
         </span>
 
