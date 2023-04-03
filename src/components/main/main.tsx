@@ -8,7 +8,8 @@ import "./main.css";
 function Main(): JSX.Element {
 
     const [board , setBoard]= useState<SquareModel[]>();
-    const length = 9;
+    const length =9;
+    let counter=0
     
     useEffect(()=>{
         chooseBoard();
@@ -27,9 +28,14 @@ function Main(): JSX.Element {
     const calcResult = ()=>{
         const value = squareStore.getState().value;
         const square = squareStore.getState().square;
-
+       
         if(value && square && !square.success &&  square.value===value){
             square.success = true;
+            counter++;
+            if(counter===74){
+                counter=0;
+                alert("YOU WIN !")
+            }
         }else{
             if(value && square)
                 alert("WRONG")
